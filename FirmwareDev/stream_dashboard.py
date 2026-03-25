@@ -1,14 +1,13 @@
 from flask import Flask
-from .AccessStream import AccessStream
+from .ControlHardware import AccessStream
 
 app = Flask(__name__)
-controls = AccessStream()
+controls = ControlHardware()
 
 @app.route('/')
 def home():
-    stream = controls.get_data_stream(content=["GPS", "IMU"], continous=False)
-    
-    return str()
+    stream = controls.ControlHardware()
+    return str(stream)
 
 if __name__ == '__main__':
     app.run(debug=True)
