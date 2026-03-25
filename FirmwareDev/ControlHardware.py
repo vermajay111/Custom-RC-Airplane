@@ -16,10 +16,10 @@ class ControlHardware:
             return
 
         return {
-                "ch1": msg.chan1_raw, 
-                "ch2": msg.chan2_raw, 
-                "ch3": msg.chan3_raw, 
-                "ch4": msg.chan4_raw  
+                "ch1": msg.chan1_raw,  # roll
+                "ch2": msg.chan2_raw,  # Pitch
+                "ch3": msg.chan3_raw,  # throttle
+                "ch4": msg.chan4_raw   # Rudder
         }
     
     def override_rc(self, ch1=65535, ch2=65535, ch3=65535, ch4=65535):
@@ -35,7 +35,8 @@ class ControlHardware:
         )
 
         #each one of the values ch1, 2... etc are linked to a certain think like so: sterring, pitch, throttle, yaw setting them to the max 16 bit max unsigned integer tells the F.C to ignore the python script and follow the command given by the remote
-    
+
+
     def set_servo(self, servo_number, pwm_value):
 
         self.master.mav.command_long_send(
